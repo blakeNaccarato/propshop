@@ -1,0 +1,18 @@
+[build-system]
+requires = ["flit_core >=3.3,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "propshop"
+requires-python = ">=3.10"
+dependencies = []
+readme = "README.md"
+dynamic = ["version", "description"]
+[[project.authors]]
+name = "Blake Naccarato"
+email = "blake.naccarato+propshop@gmail.com"
+
+[project.urls]
+Home = "https://github.com/blakeNaccarato/propshop"
+
+[project.optional-dependencies]
