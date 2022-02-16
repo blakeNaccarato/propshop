@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from dynaconf import Dynaconf
-from pydantic import FilePath, validator
+from pydantic import DirectoryPath
 from pydantic.dataclasses import dataclass
 
 import propshop
@@ -13,20 +13,18 @@ user_path = next(Path().rglob(USER_CONFIG_FILENAME), Path(USER_CONFIG_FILENAME))
 raw_config = Dynaconf(settings_files=[default_path, user_path])
 
 
+def parse_tilde_in_path(path: str) -> Path:
+    if path.startswith("~/"):
+        return Path.home() / raw_config.tables.lstrip("~/")
+    else:
+        return Path(path)
+
+
 @dataclass
 class Config:
     """A validated configuration."""
 
-    ees: FilePath
-
-    @validator("ees")
-    def validate_ees(cls, ees):
-        if ees.name != "EES.exe":
-            raise ValueError("Filename must be 'EES.exe'.")
-        return ees
-
-    def __post_init_post_parse__(self):
-        self.ees_root = self.ees.parent
+    tables: DirectoryPath = parse_tilde_in_path(raw_config.tables)
 
 
-config = Config(ees=raw_config.ees)
+config = Config()
