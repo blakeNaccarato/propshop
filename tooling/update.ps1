@@ -1,4 +1,4 @@
-copier -f -r 71a2e1d
+copier -f -r c74836d
 .venv/Scripts/activate
 pip install -U pip  # throws [WinError 5], but still works on its own
 pip install -U setuptools wheel  # must be done separately from above
