@@ -7,3 +7,5 @@ pandas~=1.4.1
 pandas-stubs~=1.2.0.48
 openpyxl~=3.0.9
 pyarrow~=7.0.0
+# For interpolation of properties
+scipy~=1.8.0
