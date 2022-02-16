@@ -14,17 +14,20 @@ raw_config = Dynaconf(settings_files=[default_path, user_path])
 
 
 def parse_tilde_in_path(path: str) -> Path:
-    if path.startswith("~/"):
-        return Path.home() / raw_config.tables.lstrip("~/")
-    else:
-        return Path(path)
+    return Path.home() / path.lstrip("~/") if path.startswith("~/") else Path(path)
 
 
 @dataclass
 class Config:
     """A validated configuration."""
 
-    tables: DirectoryPath = parse_tilde_in_path(raw_config.tables)
+    app_folder: DirectoryPath = parse_tilde_in_path(raw_config.app_folder)
+
+    def __post_init_post_parse__(self):
+        self.tables = self.app_folder / "tables"
+
+        for folder in [self.app_folder, self.tables]:
+            folder.mkdir(parents=False, exist_ok=True)
 
 
 config = Config()
