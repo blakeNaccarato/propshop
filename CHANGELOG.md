@@ -8,3 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - Nothing yet.
+
+## [0.0.1]
+
+- Support interpolating temperature to get thermal conductivity of copper
+- User must supply the property file
+
+[Unreleased]: https://github.com/blakeNaccarato/propshop/compare/0.0.1...HEAD
+[0.0.1]: https://github.com/blakeNaccarato/propshop/releases/tag/0.0.1

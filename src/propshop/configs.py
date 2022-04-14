@@ -9,7 +9,7 @@ import propshop
 DEFAULT_CONFIG_FILENAME = "defaults.toml"
 USER_CONFIG_FILENAME = "propshop.toml"
 default_path = Path(propshop.__path__[0]) / DEFAULT_CONFIG_FILENAME  # type: ignore
-user_path = next(Path().rglob(USER_CONFIG_FILENAME), Path(USER_CONFIG_FILENAME))
+user_path = Path(USER_CONFIG_FILENAME)
 raw_config = Dynaconf(settings_files=[default_path, user_path])
 
 
