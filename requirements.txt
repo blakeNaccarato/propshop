@@ -1,6 +1,6 @@
 # List project dependencies here. A workflow ports them to `pyproject.toml`. This is needed because Dependabot does not currently support `flit`-flavored `pyproject.toml`.
 # For configuration and validation
-dynaconf~=3.1.7
+dynaconf~=3.1.8
 pydantic~=1.9.0
 # For data processing
 pandas~=1.4.2
