@@ -1,7 +1,6 @@
 from pathlib import Path
 
 from dynaconf import Dynaconf
-from pydantic import DirectoryPath
 from pydantic.dataclasses import dataclass
 
 import propshop
@@ -21,9 +20,10 @@ def parse_tilde_in_path(path: str) -> Path:
 class Config:
     """A validated configuration."""
 
-    app_folder: DirectoryPath = parse_tilde_in_path(raw_config.app_folder)
+    app_folder: Path = parse_tilde_in_path(raw_config.app_folder)
 
     def __post_init_post_parse__(self):
+
         self.tables = self.app_folder / "tables"
 
         for folder in [self.app_folder, self.tables]:
