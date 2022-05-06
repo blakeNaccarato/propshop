@@ -1,4 +1,4 @@
-copier -f -r c883f43
+copier -f -r e370eec
 Remove-Item .venv -Recurse -ErrorAction SilentlyContinue
 py -3.10 -m venv .venv --upgrade-deps
-. .tooling/update.ps1
+. .tools/setup/update.ps1

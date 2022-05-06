@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: c883f43
+_commit: e370eec
 _src_path: gh:blakeNaccarato/copier-python
 github_repo_name: propshop
 include_funding: true
@@ -10,6 +10,7 @@ override_flake8: false
 override_gitattributes: false
 override_pyrightconfig: false
 override_pytest: false
+override_sourcery: false
 override_vscode_extensions: false
 override_vscode_launch: false
 override_vscode_settings: false

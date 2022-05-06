@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "devDependencies": {
+    "pyright": "~1.1"
+  }
+}
