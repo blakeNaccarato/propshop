@@ -1,4 +1,3 @@
-from os.path import expanduser
 from pathlib import Path
 
 from dynaconf import Dynaconf
@@ -13,11 +12,15 @@ user_path = Path(USER_CONFIG_FILENAME)
 raw_config = Dynaconf(settings_files=[default_path, user_path])
 
 
+def parse_tilde_in_path(path: str) -> Path:
+    return Path.home() / path.lstrip("~/") if path.startswith("~/") else Path(path)
+
+
 @dataclass
 class Config:
     """A validated configuration."""
 
-    app_folder: Path = expanduser(raw_config.app_folder)
+    app_folder: Path = parse_tilde_in_path(raw_config.app_folder)
 
     def __post_init_post_parse__(self):
 
