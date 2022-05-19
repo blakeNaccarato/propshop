@@ -7,7 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Update scipy requirement from ~=1.8.0 to ~=1.8.1 by @dependabot in https://github.com/blakeNaccarato/propshop/pull/13
+- Nothing yet.
+
+## [0.0.5]
+
+- Update scipy requirement from ~=1.8.0 to ~=1.8.1 by @dependabot in <https://github.com/blakeNaccarato/propshop/pull/13>
+- Don't use star import in `__init__.py`
 
 ## [0.0.4]
 
