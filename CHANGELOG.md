@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Nothing yet.
+- Update scipy requirement from ~=1.8.0 to ~=1.8.1 by @dependabot in https://github.com/blakeNaccarato/propshop/pull/13
 
 ## [0.0.4]
 
