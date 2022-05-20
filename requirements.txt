@@ -5,7 +5,7 @@ pydantic~=1.9.0
 # For data processing
 pandas~=1.4.2
 pandas-stubs~=1.2.0.58
-openpyxl~=3.0.9
+openpyxl~=3.0.10
 pyarrow~=8.0.0
 # For interpolation of properties
 scipy~=1.8.1
