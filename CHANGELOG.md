@@ -7,16 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Nothing yet.
+- Update pandas-stubs requirement from ~=1.2.0.58 to ~=1.2.0.60 (<https://github.com/blakeNaccarato/propshop/pull/16>)
 
 ## [0.0.6]
 
-- Update openpyxl requirement from ~=3.0.9 to ~=3.0.10 by @dependabot in https://github.com/blakeNaccarato/propshop/pull/15
-- Update pydantic requirement from ~=1.9.0 to ~=1.9.1 by @dependabot in https://github.com/blakeNaccarato/propshop/pull/14
+- Update openpyxl requirement from ~=3.0.9 to ~=3.0.10 (<https://github.com/blakeNaccarato/propshop/pull/15>)
+- Update pydantic requirement from ~=1.9.0 to ~=1.9.1 (<https://github.com/blakeNaccarato/propshop/pull/14>)
 
 ## [0.0.5]
 
-- Update scipy requirement from ~=1.8.0 to ~=1.8.1 by @dependabot in <https://github.com/blakeNaccarato/propshop/pull/13>
+- Update scipy requirement from ~=1.8.0 to ~=1.8.1 (<https://github.com/blakeNaccarato/propshop/pull/13>)
 - Don't use star import in `__init__.py`
 
 ## [0.0.4]
@@ -25,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.3]
 
-- Update pyarrow requirement from ~=7.0.0 to ~=8.0.0 by @dependabot in #12
+- Update pyarrow requirement from ~=7.0.0 to ~=8.0.0 (<https://github.com/blakeNaccarato/propshop/pull/12>)
 
 ## [0.0.2]
 
