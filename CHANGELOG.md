@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Update pandas-stubs requirement from ~=1.2.0.58 to ~=1.2.0.60 (<https://github.com/blakeNaccarato/propshop/pull/16>)
 - Update pandas-stubs requirement from ~=1.2.0.60 to ~=1.2.0.61 (<https://github.com/blakeNaccarato/propshop/pull/18>)
+- Update dynaconf requirement from ~=3.1.8 to ~=3.1.9 (<https://github.com/blakeNaccarato/propshop/pull/17>)
 
 ## [0.0.6]
 
