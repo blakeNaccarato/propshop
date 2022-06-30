@@ -1,6 +1,6 @@
 """Your one-stop shop for material properties."""
 
-__version__ = "0.0.6"
+__version__ = "0.0.7"
 
 import pandas as pd
 from numpy import typing as npt
@@ -24,6 +24,6 @@ def get_interp(mat: Mat, prop: Prop):
 
 def get_relationship_from_table(mat: Mat, prop: Prop) -> pd.DataFrame:
     return pd.read_feather(
-        config.tables / f"{mat.name}.feather",  # type: ignore
+        config.tables / f"{mat.name}.feather",
         columns=[TEMP, prop.name],
     ).dropna()

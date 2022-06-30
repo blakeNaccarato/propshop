@@ -5,11 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.0.7]
 
-- Update pandas-stubs requirement from ~=1.2.0.58 to ~=1.2.0.60 (<https://github.com/blakeNaccarato/propshop/pull/16>)
-- Update pandas-stubs requirement from ~=1.2.0.60 to ~=1.2.0.61 (<https://github.com/blakeNaccarato/propshop/pull/18>)
-- Update dynaconf requirement from ~=3.1.8 to ~=3.1.9 (<https://github.com/blakeNaccarato/propshop/pull/17>)
+- Update dynaconf requirement from ~=3.1.8 to ~=3.1.9 by @dependabot in <https://github.com/blakeNaccarato/propshop/pull/17>
+- Update pandas-stubs requirement from ~=1.2.0.58 to ~=1.4.2
 
 ## [0.0.6]
 
@@ -38,7 +37,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support interpolating temperature to get thermal conductivity of copper
 - User must supply the property file
 
-[Unreleased]: https://github.com/blakeNaccarato/propshop/compare/0.0.6...HEAD
+[Unreleased]: https://github.com/blakeNaccarato/propshop/compare/0.0.7...HEAD
+[0.0.7]: https://github.com/blakeNaccarato/propshop/compare/0.0.6...0.0.7
 [0.0.6]: https://github.com/blakeNaccarato/propshop/compare/0.0.5...0.0.6
 [0.0.5]: https://github.com/blakeNaccarato/propshop/compare/0.0.4...0.0.5
 [0.0.4]: https://github.com/blakeNaccarato/propshop/compare/0.0.3...0.0.4
