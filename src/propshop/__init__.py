@@ -1,6 +1,6 @@
 """Your one-stop shop for material properties."""
 
-__version__ = "0.0.7"
+__version__ = "0.0.8"
 
 import pandas as pd
 from numpy import typing as npt
