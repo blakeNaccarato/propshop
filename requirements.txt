@@ -8,4 +8,4 @@ pandas-stubs~=1.4.3.220801
 openpyxl~=3.0.10
 pyarrow~=9.0.0
 # For interpolation of properties
-scipy~=1.8.1
+scipy~=1.9.0
