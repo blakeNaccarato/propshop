@@ -1,0 +1,105 @@
+// Calling `pwsh` first leverages my personal $PROFILE to activate `.venv`.
+// Alternatively, we could use `.venv/Scripts/python.exe` and change the `args`, but
+// this is platform-specific anyways.
+
+{
+  "version": "2.0.0",
+  "tasks": [
+    // * -------------------------------------------------------------------------- * //
+    // * GIT * //
+    {
+      "label": "git: Rebase back to fork",
+      "type": "process",
+      "command": "git",
+      "args": ["rebase", "-i", "--fork-point", "main"],
+      "problemMatcher": []
+    },
+
+    // * -------------------------------------------------------------------------- * //
+    // * PROJECT SETUP * //
+    {
+      "label": "setup: Initialize template",
+      "type": "process",
+      "command": "pwsh",
+      "args": [".tools/scripts/init_template.ps1"],
+      "problemMatcher": []
+    },
+    {
+      "label": "setup: Setup project",
+      "type": "process",
+      "command": "pwsh",
+      "args": ["setup.ps1"],
+      "problemMatcher": []
+    },
+    {
+      "label": "setup: Update project",
+      "type": "process",
+      "command": "pwsh",
+      "args": ["update.ps1"],
+      "problemMatcher": []
+    },
+
+    // * -------------------------------------------------------------------------- * //
+    // * PRE-COMMIT * //
+
+    {
+      "label": "pre-commit: All files",
+      "type": "process",
+      "command": "pwsh",
+      "args": ["-Command", "pre-commit run --all-files"],
+      "problemMatcher": []
+    },
+
+    // * -------------------------------------------------------------------------- * //
+    // * OTHER TASKS * //
+
+    {
+      "label": "task: snakeviz",
+      "type": "process",
+      "command": "pwsh",
+      "args": ["-Command", "snakeviz .prof"],
+      "problemMatcher": []
+    },
+    {
+      "label": "task: autoflake current file",
+      "type": "process",
+      "command": "pwsh",
+      "args": [
+        "-Command",
+        "autoflake -i --remove-all-unused-imports --ignore-init-module-imports ${file}"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "task: pytest-cov: Generate coverage",
+      "type": "process",
+      "command": "pwsh",
+      "args": ["-Command", "pytest -c pytest_local.ini --cov --cov-report xml"],
+      "problemMatcher": []
+    },
+    {
+      "label": "task: Remove *.rej",
+      "type": "process",
+      "command": "pwsh",
+      "args": [
+        "-Command",
+        "Get-ChildItem -Recurse -Filter *.rej | Remove-Item"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "task: black: Ignore magic comma in this file",
+      "type": "process",
+      "command": "pwsh",
+      "args": ["-Command", "black -C ${file}"],
+      "problemMatcher": []
+    },
+    {
+      "label": "task: black: Ignore magic comma in all project files",
+      "type": "process",
+      "command": "pwsh",
+      "args": ["-Command", "black -C src tests"],
+      "problemMatcher": []
+    }
+  ]
+}

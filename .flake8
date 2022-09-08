@@ -17,6 +17,11 @@ extend-exclude =
     .venv
     .vscode
 
+; So flake8-bugbear B008 doesn't complain about Typer constructs
+extend-immutable-calls =
+    Argument
+    Option
+
 ; McCabe complexity
 max_complexity = 10
 
@@ -44,6 +49,10 @@ ignore =
     F821,
     ; flake8: Assigned to but never used, Pylance(reportUnusedVariable)
     F841,
+
+    ; Sometimes we want to save keystrokes in dict writing
+    ; flake8: Unnecessary dict call - rewrite as a literal
+    C408
 
 per-file-ignores =
 

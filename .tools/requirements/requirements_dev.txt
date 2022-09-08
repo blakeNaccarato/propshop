@@ -1,0 +1,24 @@
+# Experiment
+jupyter~=1.0.0
+nbstripout~=0.6.0
+
+# For `python` and `ipython` via `pythonrc.py`
+rich~=12.5.1
+
+# Format
+autoflake~=1.4
+black~=22.8.0  # doesn't follow semver
+
+# Lint
+flake8-codes~=0.2.2  # flake8 error code introspection
+
+# Profiling
+snakeviz~=2.1.1
+
+# Pre-commit
+pre-commit~=2.20.0
+
+# For local publishing to PyPi with flit
+keyring~=23.9.0
+
+-r requirements_both.txt
