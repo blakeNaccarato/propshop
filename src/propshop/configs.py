@@ -7,7 +7,7 @@ import propshop
 
 DEFAULT_CONFIG_FILENAME = "defaults.toml"
 USER_CONFIG_FILENAME = "propshop.toml"
-default_path = Path(propshop.__path__[0]) / DEFAULT_CONFIG_FILENAME  # type: ignore
+default_path = Path(propshop.__path__[0]) / DEFAULT_CONFIG_FILENAME  # type: ignore  # Stub issue
 user_path = Path(USER_CONFIG_FILENAME)
 raw_config = Dynaconf(settings_files=[default_path, user_path])
 
@@ -20,7 +20,7 @@ def parse_tilde_in_path(path: str) -> Path:
 class Config:
     """A validated configuration."""
 
-    app_folder: Path = parse_tilde_in_path(raw_config.app_folder)
+    app_folder: Path = parse_tilde_in_path(raw_config.app_folder)  # type: ignore  # Stub issue
 
     def __post_init_post_parse__(self):
 
