@@ -6,12 +6,26 @@
   "version": "2.0.0",
   "tasks": [
     // * -------------------------------------------------------------------------- * //
+    // * PROJECT-SPECIFIC * //
+    // Introduce any project-specific tasks here.
+    // Be sure to say override this file in the Copier questionnaire to keep changes.
+
+    // * -------------------------------------------------------------------------- * //
     // * GIT * //
     {
       "label": "git: Rebase back to fork",
       "type": "process",
-      "command": "git",
-      "args": ["rebase", "-i", "--fork-point", "main"],
+      "command": "pwsh",
+      "args": ["-Command", "git rebase -i --fork-point main"],
+      "icon": { "id": "git-branch" },
+      "problemMatcher": []
+    },
+    {
+      "label": "git: Stage all files",
+      "type": "process",
+      "command": "pwsh",
+      "args": ["-Command", "git add -A"],
+      "icon": { "id": "git-branch" },
       "problemMatcher": []
     },
 
@@ -22,6 +36,15 @@
       "type": "process",
       "command": "pwsh",
       "args": [".tools/scripts/init_template.ps1"],
+      "icon": { "id": "folder" },
+      "problemMatcher": []
+    },
+    {
+      "label": "setup: Bump template",
+      "type": "process",
+      "command": "pwsh",
+      "args": ["copier -f -r $(git rev-parse HEAD:template)"],
+      "icon": { "id": "folder" },
       "problemMatcher": []
     },
     {
@@ -29,6 +52,7 @@
       "type": "process",
       "command": "pwsh",
       "args": ["setup.ps1"],
+      "icon": { "id": "folder" },
       "problemMatcher": []
     },
     {
@@ -36,28 +60,31 @@
       "type": "process",
       "command": "pwsh",
       "args": ["update.ps1"],
+      "icon": { "id": "folder" },
       "problemMatcher": []
     },
 
     // * -------------------------------------------------------------------------- * //
     // * PRE-COMMIT * //
-
     {
-      "label": "pre-commit: All files",
+      "label": "pre-commit",
       "type": "process",
       "command": "pwsh",
-      "args": ["-Command", "pre-commit run --all-files"],
+      "args": ["-Command", "pre-commit"],
+      "icon": { "id": "git-commit" },
       "problemMatcher": []
     },
 
     // * -------------------------------------------------------------------------- * //
     // * OTHER TASKS * //
-
+    
+    
     {
       "label": "task: snakeviz",
       "type": "process",
       "command": "pwsh",
       "args": ["-Command", "snakeviz .prof"],
+      "icon": { "id": "graph-line" },
       "problemMatcher": []
     },
     {
@@ -68,13 +95,15 @@
         "-Command",
         "autoflake -i --remove-all-unused-imports --ignore-init-module-imports ${file}"
       ],
+      "icon": { "id": "code" },
       "problemMatcher": []
     },
     {
       "label": "task: pytest-cov: Generate coverage",
       "type": "process",
       "command": "pwsh",
-      "args": ["-Command", "pytest -c pytest_local.ini --cov --cov-report xml"],
+      "args": ["-Command", "pytest --cov --cov-report xml"],
+      "icon": { "id": "beaker" },
       "problemMatcher": []
     },
     {
@@ -85,6 +114,7 @@
         "-Command",
         "Get-ChildItem -Recurse -Filter *.rej | Remove-Item"
       ],
+      "icon": { "id": "folder" },
       "problemMatcher": []
     },
     {
@@ -92,6 +122,7 @@
       "type": "process",
       "command": "pwsh",
       "args": ["-Command", "black -C ${file}"],
+      "icon": { "id": "code" },
       "problemMatcher": []
     },
     {
@@ -99,6 +130,7 @@
       "type": "process",
       "command": "pwsh",
       "args": ["-Command", "black -C src tests"],
+      "icon": { "id": "code" },
       "problemMatcher": []
     }
   ]
