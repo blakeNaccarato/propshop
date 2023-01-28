@@ -2,4 +2,4 @@ import propshop
 
 
 def test():
-    pass
+    propshop.__version__

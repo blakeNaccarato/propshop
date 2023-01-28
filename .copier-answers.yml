@@ -1,6 +1,9 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: 98b0111
-_src_path: gh:blakeNaccarato/copier-python
+_commit: 891156c
+_src_path: gh:blakeNaccarato/copier-python-init
+actions_runner: ubuntu-latest
+advanced: false
+docs_engine: MYST
 github_repo_name: propshop
 include_funding: true
 override: false
@@ -11,6 +14,7 @@ override_flake8: false
 override_gitattributes: false
 override_gitignore: false
 override_isort: false
+override_markdownlint: false
 override_precommit: false
 override_pyrightconfig: false
 override_pytest: false
