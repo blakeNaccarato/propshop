@@ -7,7 +7,6 @@
     ":preserveSemverRanges"
   ],
   "automerge": true,
-  "rangeStrategy": "bump",
   "enabledManagers": ["pip_requirements", "git-submodules"],
   "git-submodules": { "enabled": true },
   "packageRules": [
