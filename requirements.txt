@@ -7,4 +7,4 @@ pandas>=1.5.1
 openpyxl>=3.0.10
 pyarrow>=10.0.0
 # For interpolation of properties
-scipy>=1.9.3
+scipy>=1.9.2
