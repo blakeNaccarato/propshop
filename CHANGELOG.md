@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Nothing yet
 
+## [0.1.0]
+
+* Specify minimum bounds for dependencies
+
 ## [0.0.10]
 
 * Back to approximate version pins
@@ -61,7 +65,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Support interpolating temperature to get thermal conductivity of copper
 * User must supply the property file
 
-[Unreleased]: https://github.com/blakeNaccarato/propshop/compare/0.0.10...HEAD
+[Unreleased]: https://github.com/blakeNaccarato/propshop/compare/0.1.0...HEAD
+[0.1.0]: https://github.com/blakeNaccarato/propshop/compare/0.10.0...0.1.0
 [0.0.10]: https://github.com/blakeNaccarato/propshop/compare/0.0.9...0.0.10
 [0.0.9]: https://github.com/blakeNaccarato/propshop/compare/0.0.8...0.0.9
 [0.0.8]: https://github.com/blakeNaccarato/propshop/compare/0.0.7...0.0.8
