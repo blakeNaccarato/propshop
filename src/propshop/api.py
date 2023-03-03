@@ -1,5 +1,5 @@
-import pandas as pd
 from numpy import typing as npt
+import pandas as pd
 from scipy.interpolate import interp1d
 
 from propshop.configs import config

@@ -23,8 +23,7 @@ class Config:
     app_folder: Path = parse_tilde_in_path(raw_config.app_folder)  # type: ignore  # Stub issue
 
     def __post_init_post_parse__(self):
-
-        self.tables = self.app_folder / "tables"
+        self.tables = self.app_folder / "tables"  # type: ignore  # For now
 
         for folder in [self.app_folder, self.tables]:
             folder.mkdir(parents=False, exist_ok=True)
