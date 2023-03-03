@@ -4,4 +4,4 @@
 
 from propshop.api import *  # type: ignore  # Importing from api which has __all__
 
-__version__ = "0.0.10"
+__version__ = "0.1.0"
