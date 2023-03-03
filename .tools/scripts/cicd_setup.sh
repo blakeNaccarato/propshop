@@ -1,3 +1,5 @@
-pip install -U pip setuptools wheel
-pip install -r .tools/requirements/requirements_cicd.txt
-pip install .
+python -m pip install --upgrade pip
+pip install --upgrade setuptools wheel
+pip install --requirement .tools/requirements/requirements_cicd.txt
+pip install --no-deps .
+pip install --upgrade --requirement 'requirements.txt'
