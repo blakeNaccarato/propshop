@@ -1,11 +1,10 @@
-"""Startup for IPython and the REPL. Isn't run for notebooks (see `ipythonrc.py`).
+"""Startup for Python.
 
 Avoid activating Rich features that break functionality outside of the REPL.
 """
 
 
 def main():
-
     from rich import inspect, traceback  # type: ignore  # For interactive mode
 
     traceback.install()

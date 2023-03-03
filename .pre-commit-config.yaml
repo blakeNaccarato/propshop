@@ -14,6 +14,8 @@
 ci:
   autoupdate_schedule: quarterly
 
+
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: "v4.4.0"
@@ -21,16 +23,16 @@ repos:
       - id: end-of-file-fixer
       - id: trailing-whitespace
   - repo: https://github.com/PyCQA/autoflake
-    rev: "v2.0.0"
+    rev: "v2.0.1"
     hooks:
       - id: autoflake
         args: [-i, --remove-all-unused-imports, --ignore-init-module-imports]
   - repo: https://github.com/psf/black
     hooks:
       - id: black
-    rev: "22.12.0"
+    rev: "23.1.0"
   - repo: https://github.com/PyCQA/isort
-    rev: "5.11.4"
+    rev: "5.12.0"
     hooks:
       - id: isort
   - repo: https://github.com/srstevenson/nb-clean
@@ -53,8 +55,17 @@ repos:
     rev: "1.13.0"
     hooks:
       - id: blacken-docs
-        additional_dependencies: ["black==22.12.0"]
+        additional_dependencies: ["black==23.1.0"]
   - repo: https://github.com/DavidAnson/markdownlint-cli2
     rev: "v0.6.0"
     hooks:
       - id: markdownlint-cli2-fix
+  - repo: https://github.com/ikamensh/flynt/
+    rev: "0.77"
+    hooks:
+      - id: flynt
+  - repo: https://github.com/asottile/pyupgrade
+    rev: "v3.3.1"
+    hooks:
+      - id: pyupgrade
+

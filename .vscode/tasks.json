@@ -32,19 +32,19 @@
     // * -------------------------------------------------------------------------- * //
     // * PROJECT SETUP * //
     {
-      "label": "setup: Initialize template",
-      "type": "process",
-      "command": "pwsh",
-      "args": [".tools/scripts/init_template.ps1"],
-      "icon": { "id": "folder" },
-      "problemMatcher": []
-    },
-    {
       "label": "setup: Bump template",
       "type": "process",
       "command": "pwsh",
-      "args": ["copier -f -r $(git rev-parse HEAD:template)"],
-      "icon": { "id": "folder" },
+      "args": [".tools/scripts/Update-Template.ps1"],
+      "icon": { "id": "file-symlink-directory" },
+      "problemMatcher": []
+    },
+    {
+      "label": "setup: Recopy template",
+      "type": "process",
+      "command": "pwsh",
+      "args": [".tools/scripts/Copy-Template.ps1"],
+      "icon": { "id": "file-symlink-directory" },
       "problemMatcher": []
     },
     {
@@ -61,6 +61,9 @@
       "command": "pwsh",
       "args": ["update.ps1"],
       "icon": { "id": "folder" },
+      // "runOptions": {
+      //   "runOn": "folderOpen"
+      // },
       "problemMatcher": []
     },
 
