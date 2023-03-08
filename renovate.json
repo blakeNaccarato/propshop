@@ -2,25 +2,87 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base",
-    "group:allNonMajor",
     ":automergeAll",
+    ":enablePreCommit",
     ":preserveSemverRanges"
   ],
+  "schedule": ["on the 8th day of the month"],
   "git-submodules": { "enabled": true },
-  "enabledManagers": ["pip_requirements", "git-submodules"],
+  "enabledManagers": [
+    "git-submodules",
+    "github-actions",
+    "pip_requirements",
+    "pre-commit"
+  ],
   "pip_requirements": {
-    "description": "Override default detection of other requirements files",
-    "includePaths": ["requirements.txt"]
+    "description": "Additionally monitor these files",
+    "fileMatch": ["^\\.tools/requirements/*"],
+    "ignorePaths": ["frozen_requirements.txt"]
   },
   "packageRules": [
     {
-      "groupName": "project_tooling",
-      "matchFiles": ["template/.tools/requirements/requirements_project.txt"]
+      "groupName": "all non-major dependencies except pyright",
+      "groupSlug": "all-minor-patch",
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "excludeDepNames": ["pyright"]
     },
     {
-      "description": "",
-      "groupName": "project_dependencies",
-      "matchFiles": ["requirements.txt"]
+      "description": "Check for typings updates all the time.",
+      "matchManagers": ["git-submodules"],
+      "matchDepNames": ["typings"],
+      "schedule": ["at any time"]
+    },
+    {
+      "description": "Don't automerge pyright. It should be manually synced with typings.",
+      "matchManagers": ["pip_requirements"],
+      "matchDepNames": ["pyright"],
+      "schedule": ["at any time"],
+      "automerge": false
+    },
+    {
+      "description": "Ignore dependencies managed by the template. Do manage pyright.",
+      "matchManagers": ["pip_requirements"],
+      "matchPaths": [".tools/requirements/*"],
+      "ignoreDeps": [
+        "jupyter-book",
+        "watch-files",
+        "myst-parser",
+        "sphinx-autobuild",
+        "sphinx-book-theme",
+        "sphinx-design",
+        "copier",
+        "toml",
+        "flit",
+        "ruff",
+        "pytest",
+        "pytest-cov",
+        "jupyter",
+        "ipympl",
+        "debugpy",
+        "rich",
+        "ipython",
+        "black",
+        "nbqa",
+        "ruff",
+        "sourcery-cli",
+        "snakeviz",
+        "pre-commit",
+        "keyring"
+      ]
+    },
+    {
+      "description": "Ignore dependencies managed by the template.",
+      "matchFiles": [".pre-commit-config.yaml"],
+      "ignoreDeps": [
+        "pre-commit/pre-commit-hooks",
+        "psf/black",
+        "charliermarsh/ruff-pre-commit",
+        "srstevenson/nb-clean",
+        "nbQA-dev/nbQA",
+        "asottile/blacken-docs",
+        "DavidAnson/markdownlint-cli2"
+      ]
     }
   ]
 }

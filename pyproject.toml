@@ -15,4 +15,20 @@ email = "blake.naccarato+propshop@gmail.com"
 [project.urls]
 Home = "https://github.com/blakeNaccarato/propshop"
 
-[project.optional-dependencies]
+[tool.ruff]
+fix = true
+select = [ "ALL",]
+src = [ "src", "tests",]
+target-version = "py311"
+extend-exclude = [ "template", "typings", ".github", ".tools", ".venv",]
+ignore = [ "ANN", "ARG005", "C408", "COM", "D10", "D20", "D213", "DTZ", "E501", "EM", "ERA", "FBT", "INP001", "ISC", "PD013", "PD901", "PGH003", "RET", "TCH", "TRY003",]
+unfixable = [ "F601",]
+
+[tool.ruff.per-file-ignores]
+"tests/**" = [ "ARG001", "S101",]
+
+[tool.ruff.flake8-bugbear]
+extend-immutable-calls = [ "typer.Argument", "typer.Option",]
+
+[tool.ruff.pep8-naming]
+classmethod-decorators = [ "pydantic.validator",]
