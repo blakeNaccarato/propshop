@@ -4,7 +4,7 @@ Update the project to the latest template version.
 
 Param(
     # Whether to update to the latest remote template version
-    [switch]$Remote
+    [switch]$Remote,
 
     # Whether to force templating using old answers.
     [switch]$Force
