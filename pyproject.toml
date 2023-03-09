@@ -5,7 +5,7 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "propshop"
 requires-python = ">=3.10"
-dependencies = [ "dynaconf>=3.1.12", "pydantic>=1.10.5", "pandas>=1.5.3", "openpyxl>=3.1.1", "pyarrow>=11.0.0", "scipy>=1.10.1",]
+dependencies = [ "dynaconf>=3.1.12", "pydantic>=1.10.6", "pandas>=1.5.3", "openpyxl>=3.1.1", "pyarrow>=11.0.0", "scipy>=1.10.1",]
 readme = "README.md"
 dynamic = [ "version", "description",]
 [[project.authors]]
