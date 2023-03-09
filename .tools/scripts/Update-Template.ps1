@@ -10,6 +10,6 @@ Param(
     [switch]$Force
 )
 
-$(if ($Remote){& '.tools/scripts/template_common.ps1'})
-copier $(if ($Force){'--force'}) --vcs-ref "$(git rev-parse HEAD:template)"
+$(if ($Remote) { & '.tools/scripts/template_common.ps1' })
+copier $(if ($Force) { '--force' }) --vcs-ref "$(git rev-parse HEAD:template)"
 python '.tools/scripts/compose_pyproject.py'
