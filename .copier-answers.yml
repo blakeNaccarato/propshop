@@ -2,8 +2,8 @@
 _commit: 7d145db
 _src_path: gh:blakeNaccarato/copier-python
 actions_runner: ubuntu-latest
-advanced: false
-docs_engine: MYST
+advanced: true
+docs_engine: MyST
 github_repo_name: propshop
 include_funding: true
 project_email: blake.naccarato+propshop@gmail.com
