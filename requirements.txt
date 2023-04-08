@@ -3,7 +3,7 @@
 dynaconf==3.1.12
 pydantic==1.10.6
 # For data processing
-pandas==1.5.3
+pandas==2.0.0
 openpyxl==3.1.1
 pyarrow==11.0.0
 # For interpolation of properties
