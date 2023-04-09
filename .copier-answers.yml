@@ -1,11 +1,8 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: ef06f56
+_commit: 00ccc3b
 _src_path: gh:blakeNaccarato/copier-python
 actions_runner: ubuntu-latest
-advanced: true
-docs_engine: MyST
 github_repo_name: propshop
-include_funding: true
 project_email: blake.naccarato+propshop@gmail.com
 project_name: propshop
 project_owner_github_username: blakeNaccarato

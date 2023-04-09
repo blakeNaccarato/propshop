@@ -1,14 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": "Establish base config, schedule, and manager defaults.",
-  "extends": [
-    "config:base",
-    "group:allNonMajor",
-    ":automergeAll",
-    ":enablePreCommit",
-    ":preserveSemverRanges"
-  ],
-  "schedule": ["on the 8th day of the month"],
+  "extends": ["config:base", ":enablePreCommit", ":disableRateLimiting"],
+  "schedule": ["on the 16th day of the month"],
   "git-submodules": { "enabled": true },
   "enabledManagers": [
     "git-submodules",
@@ -23,35 +17,72 @@
   },
   "packageRules": [
     {
-      "description": "Group all minor updates to dev tooling. Pyright is separate.",
-      "groupName": "all minor dev dependencies (except pyright)",
-      "groupSlug": "all-minor-dev",
-      "matchPaths": [".tools/requirements/*", ".pre-commit-config.yaml"],
+      "groupName": "pyright and type stubs",
+      "groupSlug": "pyright-and-type-stubs",
+      "matchPackagePatterns": ["*"],
+      "matchManagers": ["pip_requirements", "git-submodules"],
+      "matchPackageNames": ["pyright", "typings"]
+    },
+    {
+      "groupName": "all non-major dependencies except pyright",
+      "groupSlug": "all-minor-patch",
       "matchPackagePatterns": ["*"],
       "matchUpdateTypes": ["minor", "patch"],
       "excludeDepNames": ["pyright"]
     },
     {
-      "description": "Group all minor updates to package dependencies.",
-      "groupName": "all minor dependencies",
-      "groupSlug": "all-minor",
-      "matchFiles": ["requirements.txt"],
-      "matchPackagePatterns": ["*"],
-      "matchUpdateTypes": ["minor", "patch"]
+      "description": "Ignore github-actions dependencies managed by the template.",
+      "matchManagers": ["github-actions"],
+      "ignoreDeps": [
+        "dropseed/changerelease",
+        "actions/checkout",
+        "github/codeql-action",
+        "blakeNaccarato/copier-python-workflow-setup",
+        "codecov/codecov-action",
+        "stefanzweifel/git-auto-commit-action",
+        "actions/upload-pages-artifact",
+        "actions/deploy-pages"
+      ]
     },
     {
-      "description": "Check for typings updates weekly due to Pylance cadence.",
-      "matchManagers": ["git-submodules"],
-      "matchDepNames": ["typings"],
-      "schedule": ["every weekend"],
-      "automerge": false
+      "description": "Ignore pre-commit dependencies managed by the template.",
+      "matchManagers": ["pre-commit"],
+      "ignoreDeps": [
+        "pre-commit/pre-commit-hooks",
+        "psf/black",
+        "charliermarsh/ruff-pre-commit",
+        "srstevenson/nb-clean",
+        "nbQA-dev/nbQA",
+        "asottile/blacken-docs",
+        "DavidAnson/markdownlint-cli2"
+      ]
     },
     {
-      "description": "Check for pyright updates weekly due to Pylance cadence.",
-      "matchManagers": ["pip_requirements"],
-      "matchDepNames": ["pyright"],
-      "schedule": ["every weekend"],
-      "automerge": false
+      "description": "Ignore github-actions dependencies managed by the template.",
+      "matchManagers": ["github-actions"],
+      "ignoreDeps": [
+        "dropseed/changerelease",
+        "actions/checkout",
+        "github/codeql-action",
+        "blakeNaccarato/copier-python-workflow-setup",
+        "codecov/codecov-action",
+        "stefanzweifel/git-auto-commit-action",
+        "actions/upload-pages-artifact",
+        "actions/deploy-pages"
+      ]
+    },
+    {
+      "description": "Ignore pre-commit dependencies managed by the template.",
+      "matchManagers": ["pre-commit"],
+      "ignoreDeps": [
+        "pre-commit/pre-commit-hooks",
+        "psf/black",
+        "charliermarsh/ruff-pre-commit",
+        "srstevenson/nb-clean",
+        "nbQA-dev/nbQA",
+        "asottile/blacken-docs",
+        "DavidAnson/markdownlint-cli2"
+      ]
     },
     {
       "description": "Ignore dependencies managed by the template. Do manage pyright.",
@@ -82,19 +113,6 @@
         "snakeviz",
         "pre-commit",
         "keyring"
-      ]
-    },
-    {
-      "description": "Ignore dependencies managed by the template.",
-      "matchFiles": [".pre-commit-config.yaml"],
-      "ignoreDeps": [
-        "pre-commit/pre-commit-hooks",
-        "psf/black",
-        "charliermarsh/ruff-pre-commit",
-        "srstevenson/nb-clean",
-        "nbQA-dev/nbQA",
-        "asottile/blacken-docs",
-        "DavidAnson/markdownlint-cli2"
       ]
     }
   ]
