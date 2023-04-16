@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: 3d83f67
+_commit: a8882b9
 _src_path: gh:blakeNaccarato/copier-python
 actions_runner: ubuntu-latest
 github_repo_name: propshop
