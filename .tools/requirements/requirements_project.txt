@@ -1,2 +1,2 @@
 # Specify project-specific requirements here. Don't delete this file even if empty.
-pandas-stubs~=1.5.3.230304
+pandas-stubs~=2.0.0.230412
