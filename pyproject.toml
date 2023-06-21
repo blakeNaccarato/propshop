@@ -4,16 +4,24 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "propshop"
-requires-python = ">=3.10"
-dependencies = [ "dynaconf>=3.1.12", "pydantic>=1.10.7", "pandas>=2.0.0", "openpyxl>=3.1.2", "pyarrow>=12.0.0", "scipy>=1.10.1",]
+version = "0.1.1"
+description = "Your one-stop shop for material properties."
 readme = "README.md"
-dynamic = [ "version", "description",]
+requires-python = ">=3.10"
+classifiers = [ "License :: OSI Approved :: MIT License",]
+dependencies = [ "dynaconf>=3.1.12", "pydantic>=1.10.7", "pandas>=2.0.0", "openpyxl>=3.1.2", "pyarrow>=12.0.0", "scipy>=1.10.1",]
 [[project.authors]]
 name = "Blake Naccarato"
 email = "blake.naccarato+propshop@gmail.com"
 
+[project.license]
+file = "LICENSE"
+
 [project.urls]
+Changes = "https://blakeNaccarato.github.io/propshop/changelog.html"
+Docs = "https://blakeNaccarato.github.io/propshop"
 Home = "https://github.com/blakeNaccarato/propshop"
+Tracker = "https://github.com/blakeNaccarato/propshop/issues"
 
 [tool.ruff]
 fix = true
@@ -21,7 +29,7 @@ select = [ "ALL",]
 src = [ "src", "tests",]
 target-version = "py311"
 extend-exclude = [ "template", "typings", ".github", ".tools", ".venv",]
-ignore = [ "ANN", "ARG005", "C408", "COM", "D10", "D20", "D213", "D402", "DTZ", "E501", "EM", "ERA", "FBT", "F841", "G0", "INP001", "ISC", "PD013", "PD901", "PD011", "PGH003", "PLR0913", "PLW2901", "RET", "S301", "TCH", "TRY003", "W2", "B018", "F821", "S101", "T201",]
+ignore = [ "ANN", "ARG005", "C408", "COM", "D10", "D20", "D213", "D402", "DTZ", "E501", "EM", "ERA", "FBT", "F841", "G0", "INP001", "ISC", "PD013", "PD901", "PD011", "PGH003", "PIE804", "PLR0913", "PLR2004", "PLW2901", "RET", "S301", "TCH", "TD", "TRY003", "W2", "B018", "F821", "S101", "T201",]
 unfixable = [ "F601",]
 
 [tool.ruff.pydocstyle]
@@ -31,6 +39,7 @@ convention = "google"
 split-on-trailing-comma = false
 
 [tool.ruff.per-file-ignores]
+"docs/**" = [ "E402",]
 "tests/**" = [ "ARG001", "S101",]
 
 [tool.ruff.flake8-bugbear]

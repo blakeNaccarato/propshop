@@ -1,5 +1,6 @@
-import propshop
+"""Tests."""
 
 
-def test():
-    propshop.__version__
+def test_import():
+    """Trivial test that the package is importable."""
+    import propshop  # noqa: F401

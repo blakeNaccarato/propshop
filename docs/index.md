@@ -1,3 +1,9 @@
-# Index
+```{include} ../README.md
+:relative-docs: docs/
+:relative-images:
+```
 
-Lorem ipsum
+```{toctree}
+:hidden:
+changelog
+```

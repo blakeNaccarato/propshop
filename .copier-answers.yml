@@ -1,11 +1,14 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: 1bbbc7c
+_commit: fb54a95
 _src_path: gh:blakeNaccarato/copier-python
 actions_runner: ubuntu-latest
+active: false
 github_repo_name: propshop
+project_description: Your one-stop shop for material properties.
 project_email: blake.naccarato+propshop@gmail.com
 project_name: propshop
 project_owner_github_username: blakeNaccarato
 project_owner_name: Blake Naccarato
+project_version: 0.1.1
 python_version: '3.10'
 year_of_project_creation: 2022
