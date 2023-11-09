@@ -9,7 +9,7 @@ description = "Your one-stop shop for material properties."
 readme = "README.md"
 requires-python = ">=3.10"
 classifiers = [ "License :: OSI Approved :: MIT License",]
-dependencies = [ "dynaconf>=3.1.12", "pydantic>=1.10.7", "pandas>=2.0.0", "openpyxl>=3.1.2", "pyarrow>=12.0.0", "scipy>=1.10.1",]
+dependencies = [ "dynaconf>=3.1.12", "pydantic>=1.10.7", "pandas>=2.0.0", "openpyxl>=3.1.2", "pyarrow>=14.0.1", "scipy>=1.10.1",]
 [[project.authors]]
 name = "Blake Naccarato"
 email = "blake.naccarato+propshop@gmail.com"
