@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from dynaconf import Dynaconf
-from pydantic.dataclasses import dataclass
+from pydantic.v1.dataclasses import dataclass
 
 import propshop
 
