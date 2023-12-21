@@ -9,9 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Nothing yet
 
-## [0.0.0]
+## [0.1.2]
 
-- No features yet
+- Bump pydantic
 
-[Unreleased]: https://github.com/blakeNaccarato/propshop/compare/0.0.0...HEAD
-[0.0.0]: https://github.com/blakeNaccarato/propshop/releases/tag/0.0.0
+[Unreleased]: https://github.com/blakeNaccarato/propshop/compare/0.1.2...HEAD
+[0.1.2]: https://github.com/blakeNaccarato/propshop/releases/tag/0.1.1

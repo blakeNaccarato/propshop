@@ -3,7 +3,7 @@ from datetime import date
 project = ""
 html_title = "propshop"
 copyright = f"{date.today().year}, Blake Naccarato"  # noqa: A001
-version = "0.1.1"
+version = "0.1.2"
 master_doc = "index"
 language = "en"
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
