@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: "blakeNaccarato/copier-python-workflow-setup@v0.2.3"
         with:
-          python-version: "3.10"
+          python-version: "3.11"
           install-project: false
       - run: "flit publish"
         env:
