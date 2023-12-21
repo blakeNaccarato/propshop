@@ -1,9 +1,8 @@
 ci:
   skip:
-    - "compose-pyproject"
+    - "core-update"
     - "pytest-fast-only"
-    - "pytest-slow-only"
-    - "pyright"
+    - "fawltydeps"
   autoupdate_schedule: "quarterly"
 
 repos:
@@ -14,39 +13,14 @@ repos:
       - id: "check-useless-excludes"
   - repo: "local"
     hooks:
-      # * -------------------------------------------------------------------------- * #
-      # * Changes below should persist in significant template updates.
-
-      # * -------------------------------------------------------------------------- * #
-      # * Changes below may be lost in significant template updates.
-
-      - id: "compose-pyproject"
-        name: "compose-pyproject"
+      - id: "core-update"
+        name: "core-update"
+        stages: ["post-commit"]
+        always_run: true
+        verbose: true
         pass_filenames: false
         language: "system"
-        entry: "pwsh -Command python .tools/scripts/compose_pyproject.py"
-        files: |
-          (?x)^(
-            pyproject.toml
-            |requirements.txt
-            |.tools/pyproject.toml
-          )$
-      - id: "pyright"
-        name: "pyright"
-        pass_filenames: false
-        language: "system"
-        entry: "pwsh .tools/scripts/Invoke-Pyright.ps1"
-        files: |
-          (?x)^(
-            src/.*
-            |tests/.*
-            |pyproject.toml
-            |requirements.txt
-            |.tools/(
-              pyproject.toml
-              |requirements/.*
-            )
-          )$
+        entry: "pwsh -Command python .tools/scripts/core_update.py"
       - id: "pytest-fast-only"
         name: "pytest-fast-only"
         verbose: true
@@ -56,51 +30,31 @@ repos:
           pwsh -Command "pytest -m 'not slow' --suppress-no-test-exit-code"
         files: |
           (?x)^(
-            pyproject.toml
-            |requirements.txt
-            |.tools/(
-              pyproject.toml
-              |requirements/.*
-            )
+            pyproject\.toml
+            src/.*
+            |tests/.*
+            |\.tools/requirements/.*
           )$
-      - id: "pytest-slow-only"
-        name: "pytest-slow-only"
+      - id: "fawltydeps"
+        name: "fawltydeps"
         verbose: true
         pass_filenames: false
         language: "system"
-        entry: |
-          pwsh -Command "pytest -m 'slow' --suppress-no-test-exit-code"
+        entry: "pwsh -Command fawltydeps"
         files: |
           (?x)^(
             src/.*
-            |tests/.*
+            |pyproject\.toml
+            |requirements\.txt
+            |\.tools/requirements/.*
           )$
-
-  # * ------------------------------------------------------------------------------ * #
-  # * Changes below should persist in significant template updates.
-
-  # * ------------------------------------------------------------------------------ * #
-  # * Changes below may be lost in significant template updates.
-
   - repo: "https://github.com/pre-commit/pre-commit-hooks"
-    rev: "v4.4.0"
+    rev: "v4.5.0"
     hooks:
       - id: "end-of-file-fixer"
       - id: "trailing-whitespace"
-  - repo: "https://github.com/DavidAnson/markdownlint-cli2"
-    rev: "v0.7.1"
-    hooks:
-      - id: "markdownlint-cli2-fix"
-  - repo: "https://github.com/psf/black"
-    rev: "23.3.0"
-    hooks:
-      - id: "black"
-  - repo: "https://github.com/charliermarsh/ruff-pre-commit"
-    rev: "v0.0.270"
-    hooks:
-      - id: "ruff"
   - repo: "https://github.com/srstevenson/nb-clean"
-    rev: "2.4.0"
+    rev: "3.1.0"
     hooks:
       - id: "nb-clean"
         args:
@@ -112,30 +66,17 @@ repos:
         files: |
           (?x)^(
             src/.*
+            |docs/.*
             |tests/.*
           )$
-      - id: "nb-clean"
-        name: "nb-clean (keep docs outputs)"
-        args:
-          - "--remove-empty-cells"
-          - "--preserve-cell-outputs"
-          - "--preserve-cell-metadata"
-          - "special"
-          - "tags"
-          - "--"
-        files: |
-          (?x)^(
-            docs/.*
-          )$
-  - repo: "https://github.com/asottile/blacken-docs"
-    rev: "1.13.0"
+  - repo: "https://github.com/DavidAnson/markdownlint-cli2"
+    rev: "v0.11.0"
     hooks:
-      - id: "blacken-docs"
-        additional_dependencies: ["black==23.3.0"]
-  - repo: "https://github.com/nbQA-dev/nbQA"
-    rev: "1.7.0"
+      - id: "markdownlint-cli2-fix"
+  - repo: "https://github.com/charliermarsh/ruff-pre-commit"
+    rev: "v0.1.7"
     hooks:
-      - id: "nbqa-black"
-        additional_dependencies: ["black==23.3.0"]
-      - id: "nbqa-ruff"
-        additional_dependencies: ["ruff==0.0.270"]
+      - id: "ruff"
+        types_or: ["python", "pyi", "jupyter"]
+      - id: "ruff-format"
+        types_or: ["python", "pyi", "jupyter"]

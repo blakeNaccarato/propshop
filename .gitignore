@@ -1,53 +1,38 @@
 # * -------------------------------------------------------------------------------- * #
-# * Changes below should persist in significant template updates.
+# * Template gitignore
 
-# * -------------------------------------------------------------------------------- * #
-# * Changes below may be lost in significant template updates.
-
+# To allow for local variation in type checking without overriding CI
+pyrightconfig.json
 # To avoid committing profiler results
 *.prof
 # To avoid committing rejected changes upon bumping template
 *.rej
 # Don't commit first time setup script from copier-python-init
-first_time_setup.ps1
+/.tools/scripts/first_time_setup.ps1
 # Don't commit code workspace files, which might be symlinked here
 *.code-workspace
 # Avoid committing local docs builds for previewing
+_build
 _site
 # If using Google Cloud Platform Workload Identity Federation, avoid committing keys
 # Ignore generated credentials from google-github-actions/auth
 gha-creds-*.json
 
 # * -------------------------------------------------------------------------------- * #
-# * Partial Node.gitignore
-# *
+# * Node (partial)
 # * https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore
 
 # NPM/Node.JS because of Pyright CI/CD dependency
 node_modules/
 
 # * -------------------------------------------------------------------------------- * #
-# * Gitignore for MyST-NB
+# * MyST-NB
 
 jupyter_execute
 .jupyter_cache
 
 # * -------------------------------------------------------------------------------- * #
-# * Modifications to the below Python.gitignore
-# *
-# * https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore
-
-
-# IPython
-.ipython/profile_default/*
-!.ipython/profile_default/startup/
-.ipython/profile_default/startup/README
-ipython_config.py
-
-
-# * -------------------------------------------------------------------------------- * #
-# * Modified Python.gitignore
-# *
+# * Python
 # * https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore
 
 # Byte-compiled / optimized / DLL files

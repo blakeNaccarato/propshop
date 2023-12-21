@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Establish base config, schedule, and manager defaults.",
+  "description": "Establish base config, schedule, and manager defaults",
   "extends": ["config:base", ":enablePreCommit", ":disableRateLimiting"],
   "dependencyDashboardApproval": true,
   "schedule": ["on the 16th day of the month"],
@@ -14,26 +14,54 @@
     "pre-commit"
   ],
   "pip_requirements": {
-    "description": "Additionally monitor these files.",
+    "description": "Additionally monitor these files",
     "fileMatch": ["^\\.tools/requirements/*"]
   },
   "packageRules": [
     {
-      "groupName": "pyright and type stubs",
-      "groupSlug": "pyright-and-type-stubs",
-      "matchManagers": ["pip_requirements", "git-submodules"],
-      "matchPackageNames": ["pyright", "typings"]
-    },
-    {
-      "groupName": "all non-major dependencies except pyright",
-      "groupSlug": "all-minor-patch",
+      "description": "Core dependencies, unmmatched by the rules below",
+      "groupName": "core",
       "matchPackagePatterns": ["*"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "excludeDepNames": ["pyright"]
+      "matchUpdateTypes": ["minor", "patch"]
     },
     {
-      "description": "Ignore github-actions dependencies managed by the template.",
+      "description": "Type checking dependencies",
+      "groupName": "type checking",
+      "matchManagers": ["pip_requirements", "git-submodules"],
+      "matchPackageNames": ["pyright", "submodules/typings"]
+    },
+    {
+      "description": "Ignore changerelease.yml workflow deps managed by the template",
       "matchManagers": ["github-actions"],
+      "matchFileNames": [".github/workflows/*"],
+      "ignoreDeps": ["dropseed/changerelease"]
+    },
+    {
+      "description": "Ignore codeql.yml workflow deps managed by the template",
+      "matchManagers": ["github-actions"],
+      "matchFileNames": [".github/workflows/*"],
+      "ignoreDeps": ["actions/checkout", "github/codeql-action"]
+    },
+    {
+      "description": "Ignore main.yml workflow deps managed by the template",
+      "matchManagers": ["github-actions"],
+      "matchFileNames": [".github/workflows/*"],
+      "ignoreDeps": [
+        "blakeNaccarato/copier-python-workflow-setup",
+        "codecov/codecov-action",
+        "stefanzweifel/git-auto-commit-action"
+      ]
+    },
+    {
+      "description": "Ignore publish.yml workflow deps managed by the template",
+      "matchManagers": ["github-actions"],
+      "matchFileNames": [".github/workflows/*"],
+      "ignoreDeps": ["actions/upload-pages-artifact", "actions/deploy-pages"]
+    },
+    {
+      "description": "Ignore sphinx.yml workflow deps managed by the template",
+      "matchManagers": ["github-actions"],
+      "matchFileNames": [".github/workflows/*"],
       "ignoreDeps": [
         "dropseed/changerelease",
         "actions/checkout",
@@ -46,47 +74,67 @@
       ]
     },
     {
-      "description": "Ignore pre-commit dependencies managed by the template.",
+      "description": "Ignore pre-commit dependencies managed by the template",
       "matchManagers": ["pre-commit"],
+      "matchFileNames": [".pre-commit-config.yaml"],
       "ignoreDeps": [
         "pre-commit/pre-commit-hooks",
         "psf/black",
         "charliermarsh/ruff-pre-commit",
         "srstevenson/nb-clean",
-        "nbQA-dev/nbQA",
         "asottile/blacken-docs",
         "DavidAnson/markdownlint-cli2"
       ]
     },
     {
-      "description": "Ignore dependencies managed by the template. Do manage pyright.",
+      "description": "Ignore requirements_both.txt deps managed by this template",
       "matchManagers": ["pip_requirements"],
-      "matchPaths": [".tools/requirements/*"],
+      "matchFileNames": [".tools/requirements/*"],
       "ignoreDeps": [
-        "jupyter-book",
-        "watch-files",
-        "myst-parser",
-        "sphinx-autobuild",
-        "sphinx-book-theme",
-        "sphinx-design",
-        "copier",
-        "toml",
-        "flit",
         "ruff",
         "pytest",
         "pytest-cov",
-        "jupyter",
-        "ipympl",
+        "pytest-custom-exit-code",
+        "nb-clean"
+      ]
+    },
+    {
+      "description": "Ignore requirements_ci.txt deps managed by this template",
+      "matchManagers": ["pip_requirements"],
+      "matchFileNames": [".tools/requirements/*"],
+      "ignoreDeps": ["flit"]
+    },
+    {
+      "description": "Ignore requirements_core.txt deps managed by this template",
+      "matchManagers": ["pip_requirements"],
+      "matchFileNames": [".tools/requirements/*"],
+      "ignoreDeps": ["copier", "dulwich", "flit_core", "pip", "wheel"]
+    },
+    {
+      "description": "Ignore requirements_dev.txt deps managed by this template",
+      "matchManagers": ["pip_requirements"],
+      "matchFileNames": [".tools/requirements/*"],
+      "ignoreDeps": [
+        "fawltydeps",
+        "ipykernel",
         "debugpy",
         "rich",
-        "ipython",
         "black",
-        "nbqa",
-        "ruff",
         "sourcery-cli",
         "snakeviz",
         "pre-commit",
         "keyring"
+      ]
+    },
+    {
+      "description": "Ignore requirements_docs.txt deps managed by this template",
+      "matchManagers": ["pip_requirements"],
+      "matchFileNames": [".tools/requirements/*"],
+      "ignoreDeps": [
+        "myst-parser",
+        "sphinx-autobuild",
+        "sphinx-book-theme",
+        "sphinx-design"
       ]
     }
   ]

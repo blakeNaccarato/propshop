@@ -1,26 +1,44 @@
 {
   "version": "0.2.0",
+  "inputs": [
+    {
+      "id": "input",
+      "type": "promptString",
+      "description": "Input arguments."
+    }
+  ],
   "configurations": [
-    // * -------------------------------------------------------------------------- * //
-    // * Changes below should persist in significant template updates.
-
-    // * -------------------------------------------------------------------------- * //
-    // * Changes below may be lost in significant template updates.
     {
       "name": "Python: Current file",
-      "type": "python",
+      "type": "debugpy",
       "request": "launch",
       "program": "${file}",
       "console": "internalConsole"
     },
     {
-      "name": "Python: Current file, not just my code",
+      "name": "Python: Current file with args",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file} ${input:input}",
+      "console": "internalConsole"
+    },
+    {
+      //? Needs to be "pytest" adapter for now.
+      //? "debugpy" adapter isn't seen, to toggle "justMyCode" in test configuration
+      //? https://github.com/microsoft/vscode-python-debugger/issues/112
+      //? https://github.com/microsoft/vscode-python-debugger/issues/94
+      "name": "pytest",
+      //! Uncomment below to disable "justMyCode" when debugging. Comment out after.
+      // "purpose": ["debug-test"],
+      //!
+      "presentation": {
+        "hidden": true
+      },
       "type": "python",
       "request": "launch",
       "program": "${file}",
-      "justMyCode": false,
-      // "purpose": ["debug-test"], // Uncomment to debug tests more deeply.
-      "console": "internalConsole"
+      "console": "internalConsole",
+      "justMyCode": false
     }
   ]
 }

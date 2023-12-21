@@ -19,11 +19,11 @@ jobs:
   build:
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "blakeNaccarato/copier-python-workflow-setup@v0.1.0"
+      - uses: "blakeNaccarato/copier-python-workflow-setup@v0.2.3"
         with:
           python-version: "3.10"
       - run: "python -m sphinx -T -E docs _site"
-      - uses: "actions/upload-pages-artifact@v1.0.8"
+      - uses: "actions/upload-pages-artifact@v2.0.0"
   deploy:
     if: "${{ !(github.event_name == 'pull_request') }}"
     environment:
@@ -33,4 +33,4 @@ jobs:
     needs: "build"
     steps:
       - id: "deployment"
-        uses: "actions/deploy-pages@v2.0.1"
+        uses: "actions/deploy-pages@v2.0.5"

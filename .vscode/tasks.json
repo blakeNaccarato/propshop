@@ -5,40 +5,29 @@
 {
   "version": "2.0.0",
   "inputs": [
-    // * -------------------------------------------------------------------------- * //
-    // * Changes below should persist in significant template updates.
-
-    // * -------------------------------------------------------------------------- * //
-    // * Changes below may be lost in significant template updates.
-
     {
       "id": "templateOptions",
       "description": "Template options.",
       "type": "pickString",
-      "options": ["", "-Defaults", "-Recopy", "-Recopy -Defaults"]
+      "options": [
+        "",
+        "-Defaults",
+        "-Recopy",
+        "-Recopy -Defaults",
+        "-Defaults -NoVerify",
+        "-Recopy -NoVerify",
+        "-Recopy -Defaults -NoVerify"
+      ]
     }
   ],
   "tasks": [
     // * -------------------------------------------------------------------------- * //
-    // * Changes below should persist in significant template updates.
-
-    // * -------------------------------------------------------------------------- * //
-    // * Changes below may be lost in significant template updates.
-
-    // * -------------------------------------------------------------------------- * //
     // * PROJECT SETUP * //
-    {
-      "label": "setup: Compose pyproject.toml",
-      "type": "shell",
-      "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
-      "command": "python .tools/scripts/compose_pyproject.py",
-      "icon": { "id": "file-symlink-directory" },
-      "problemMatcher": []
-    },
+
     {
       "label": "setup: Copy template",
       "type": "shell",
-      "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
+      "options": { "shell": { "executable": "pwsh" } },
       "command": ".tools/scripts/Copy-Template.ps1 ${input:templateOptions}",
       "icon": { "id": "file-symlink-directory" },
       "problemMatcher": []
@@ -46,7 +35,7 @@
     {
       "label": "setup: Setup project",
       "type": "shell",
-      "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
+      "options": { "shell": { "executable": "pwsh" } },
       "command": "setup.ps1",
       "icon": { "id": "file-symlink-directory" },
       "problemMatcher": []
@@ -54,7 +43,7 @@
     {
       "label": "setup: Update project",
       "type": "shell",
-      "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
+      "options": { "shell": { "executable": "pwsh" } },
       "command": "update.ps1",
       "icon": { "id": "file-symlink-directory" },
       // "runOptions": {
@@ -65,7 +54,7 @@
     {
       "label": "setup: Perform first-time setup",
       "type": "shell",
-      "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
+      "options": { "shell": { "executable": "pwsh" } },
       "command": "first_time_setup.ps1",
       "icon": { "id": "file-symlink-directory" },
       "problemMatcher": []
@@ -81,6 +70,7 @@
 
     // * -------------------------------------------------------------------------- * //
     // * PRE-COMMIT * //
+
     {
       "label": "pre-commit",
       "type": "shell",
@@ -100,60 +90,7 @@
 
     // * -------------------------------------------------------------------------- * //
     // * GIT * //
-    {
-      "label": "git: Push with tags",
-      "type": "shell",
-      "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
-      "command": "git push; git push --tags",
-      "icon": { "id": "git-branch" },
-      "problemMatcher": []
-    },
-    {
-      "label": "git: Prepare to release new version",
-      "dependsOrder": "sequence",
-      "dependsOn": ["setup: Compose pyproject.toml", "git: Stage all files"],
-      "type": "shell",
-      "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
-      "command": "git commit -m 'Release ${input:version}'; git tag ${input:version}",
-      "icon": { "id": "git-branch" },
-      "problemMatcher": []
-    },
-    {
-      "label": "git: Push with tags",
-      "type": "shell",
-      "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
-      "command": "git push; git push --tags",
-      "icon": { "id": "git-branch" },
-      "problemMatcher": []
-    },
-    {
-      "label": "git: Prepare to release new version",
-      "dependsOrder": "sequence",
-      "dependsOn": ["setup: Compose pyproject.toml", "git: Stage all files"],
-      "type": "shell",
-      "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
-      "command": "git commit -m 'Release ${input:version}'; git tag ${input:version}",
-      "icon": { "id": "git-branch" },
-      "problemMatcher": []
-    },
-    {
-      "label": "git: Push with tags",
-      "type": "shell",
-      "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
-      "command": "git push; git push --tags",
-      "icon": { "id": "git-branch" },
-      "problemMatcher": []
-    },
-    {
-      "label": "git: Prepare to release new version",
-      "dependsOrder": "sequence",
-      "dependsOn": ["setup: Compose pyproject.toml", "git: Stage all files"],
-      "type": "shell",
-      "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
-      "command": "git commit -m 'Release ${input:version}'; git tag ${input:version}",
-      "icon": { "id": "git-branch" },
-      "problemMatcher": []
-    },
+
     {
       "label": "git: Rebase back to fork",
       "type": "shell",
@@ -162,51 +99,15 @@
       "icon": { "id": "git-branch" },
       "problemMatcher": []
     },
-    {
-      "label": "git: Stage all files",
-      "type": "shell",
-      "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
-      "command": "git add --all",
-      "icon": { "id": "git-branch" },
-      "problemMatcher": []
-    },
-
-    // * -------------------------------------------------------------------------- * //
-    // * BLACK * //
-    {
-      "label": "black: Ignore magic comma in this file",
-      "type": "shell",
-      "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
-      "command": "black -C ${file}",
-      "icon": { "id": "code" },
-      "problemMatcher": []
-    },
-    {
-      "label": "black: Ignore magic comma in all project files",
-      "type": "shell",
-      "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
-      "command": "black -C src tests",
-      "icon": { "id": "code" },
-      "problemMatcher": []
-    },
 
     // * -------------------------------------------------------------------------- * //
     // * OTHER TASKS * //
-    {
-      "label": "task: format notebook, clear outputs",
-      "dependsOrder": "sequence",
-      "dependsOn": ["task: format notebook"],
-      "type": "shell",
-      "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
-      "command": "nb-clean clean --remove-empty-cells --preserve-cell-metadata special tags -- ${file}",
-      "icon": { "id": "notebook" },
-      "problemMatcher": []
-    },
+
     {
       "label": "task: format notebook",
       "type": "shell",
       "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
-      "command": "nbqa black ${file}; nbqa ruff --fix-only ${file}; nb-clean clean --remove-empty-cells --preserve-cell-outputs --preserve-cell-metadata tags special -- ${file}",
+      "command": "nb-clean clean --remove-empty-cells --preserve-cell-outputs --preserve-cell-metadata special tags -- ${file}; ruff --fix-only ${file}; ruff format ${file}",
       "icon": { "id": "notebook" },
       "problemMatcher": []
     },
@@ -219,9 +120,17 @@
       "problemMatcher": []
     },
     {
-      "label": "task: Invoke pyright",
+      "label": "task: run core update",
       "type": "shell",
       "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
+      "command": "python .tools/scripts/core_update.py",
+      "icon": { "id": "graph" },
+      "problemMatcher": []
+    },
+    {
+      "label": "task: Invoke pyright",
+      "type": "shell",
+      "options": { "shell": { "executable": "pwsh" } },
       "command": ".tools/scripts/Invoke-Pyright.ps1",
       "icon": { "id": "type-hierarchy-sub" },
       "problemMatcher": []
@@ -230,7 +139,7 @@
       "label": "task: sphinx-autobuild docs (preview)",
       "type": "shell",
       "options": { "shell": { "executable": "pwsh", "args": ["-Command"] } },
-      "command": "sphinx-autobuild -n docs _site --watch README.md --watch CHANGELOG.md",
+      "command": "sphinx-build -Ean docs _site; sphinx-autobuild -n docs _site --watch **/*.md",
       "icon": { "id": "book" },
       "problemMatcher": []
     },

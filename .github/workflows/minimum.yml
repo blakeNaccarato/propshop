@@ -1,0 +1,17 @@
+name: "minimum"
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 0" # Every Sunday at midnight.
+
+jobs:
+  pytest:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "blakeNaccarato/copier-python-workflow-setup@v0.2.3"
+        with:
+          python-version: "3.10"
+          latest-pins: false
+      - run: "pytest --cov"
+      - uses: "codecov/codecov-action@v3.1.4"
