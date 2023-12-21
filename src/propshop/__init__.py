@@ -2,6 +2,8 @@
 
 # pyright: reportImportCycles=none
 # sourcery skip: no-wildcard-imports
+from pandas import set_option
+
 from propshop.api import *  # noqa: F403  # type: ignore  # Importing from api which has __all__
 
-__version__ = "0.1.1"
+set_option("mode.string_storage", "pyarrow")

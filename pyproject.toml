@@ -13,8 +13,8 @@ classifiers = ["License :: OSI Approved :: MIT License"]
 dependencies = [
     "dynaconf>=3.1.12",
     "pydantic>=2.5.2",
+    "numpy>=1.26.2",
     "pandas>=2.0.0",
-    "openpyxl>=3.1.2",
     "pyarrow>=14.0.1",
     "scipy>=1.10.1",
 ]
@@ -33,6 +33,9 @@ Tracker = "https://github.com/blakeNaccarato/propshop/issues"
 output_format = "human_detailed"
 code = ["src"]
 deps = ["pyproject.toml"]
+ignore_unused = [
+    "pyarrow", # propshop.__init__: pd.set_option("mode.string_storage", "pyarrow")
+]
 [tool.fawltydeps.custom_mapping]
 ipykernel = ["IPython"]
 

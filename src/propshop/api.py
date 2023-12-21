@@ -22,6 +22,5 @@ def get_interp(mat: Mat, prop: Prop):
 
 def get_relationship_from_table(mat: Mat, prop: Prop) -> pd.DataFrame:
     return pd.read_feather(
-        config.tables / f"{mat.name}.feather",
-        columns=[TEMP, prop.name],
+        config.tables / f"{mat.name}.feather", columns=[TEMP, prop.name]
     ).dropna()
