@@ -5,7 +5,7 @@ from scipy.interpolate import interp1d
 from propshop.configs import config
 from propshop.library import Mat, Prop
 
-__all__ = ["get_prop", "get_interp", "get_relationship_from_table"]
+__all__ = ["get_interp", "get_prop", "get_relationship_from_table"]
 
 TEMP = "TEMPERATURE"
 
